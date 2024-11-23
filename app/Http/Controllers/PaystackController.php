@@ -25,11 +25,13 @@ class PaystackController extends Controller
     }
 
    
-    public function handleGatewayCallback()
+    public function handleGatewayCallback(Request $request)
     {
         $paymentDetails = Paystack::getPaymentData();
-
+ $ref=$paymentDetails['data']['reference'];
+ echo $ref;
         dd($paymentDetails);
+       
         // Now you have the payment details,
         // you can store the authorization_code in your db to allow for recurrent subscriptions
         // you can then redirect or do whatever you want

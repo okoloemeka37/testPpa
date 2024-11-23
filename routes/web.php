@@ -15,4 +15,4 @@ Route::get('/', function () {
 Route::post('/pay', [PaystackController::class, 'redirectToGateway'])->name('pay');
 
 
-Route::get('/payment/callback', [PaystackController::class, 'handleGatewayCallback']);
+Route::get('/payment/callback', [PaystackController::class, 'handleGatewayCallback'])->name('callback');
