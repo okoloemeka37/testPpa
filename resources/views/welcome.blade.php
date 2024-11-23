@@ -20,10 +20,11 @@ $split = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-   
+    <script src="https://js.paystack.co/v1/inline.js" defer></script>
+
 </head>
 <body>
-    <form method="POST" action="https://zyler.cleverapps.io/pay"  class="form-horizontal">
+    <form method="POST" action="https://zyler.cleverapps.io/pay"  id="paymentForm" class="form-horizontal">
         <div class="row" style="margin-bottom:40px;">
             <div class="col-md-8 col-md-offset-2">
                 <p>
@@ -54,5 +55,33 @@ $split = [
             </div>
         </div>
     </form>
+
+
+
+    <script>
+        const paymentForm = document.getElementById('paymentForm');
+    paymentForm.addEventListener("submit", payWithPaystack, false);
+    function payWithPaystack(e) {
+      e.preventDefault();
+    
+      let handler = PaystackPop.setup({
+        key: 'pk_test_xxxxxxxxxx', // Replace with your public key
+        email: document.getElementById("email-address").value,
+        amount: document.getElementById("amount").value * 100,
+        ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+        // label: "Optional string that replaces customer email"
+        onClose: function(){
+          alert('Window closed.');
+        },
+        callback: function(response){
+          let message = 'Payment complete! Reference: ' + response.reference;
+          alert(message);
+        }
+      });
+    
+      handler.openIframe();
+    }
+      </script>
+    
 </body>
 </html>
