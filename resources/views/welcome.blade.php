@@ -23,7 +23,7 @@ $split = [
    
 </head>
 <body>
-    <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
+    <form method="POST" action="https://zyler.cleverapps.io/pay"  class="form-horizontal">
         <div class="row" style="margin-bottom:40px;">
             <div class="col-md-8 col-md-offset-2">
                 <p>
