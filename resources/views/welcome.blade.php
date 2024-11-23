@@ -33,9 +33,9 @@ $split = [
                         ₦ 2,950
                     </div>
                 </p>
-                <input type="hidden" name="email" value="otemuyiwa@gmail.com"> {{-- required --}}
+                <input type="hidden" name="email" id="email-address" value="otemuyiwa@gmail.com"> {{-- required --}}
                 <input type="hidden" name="orderID" value="345">
-                <input type="hidden" name="amount" value="800"> {{-- required in kobo --}}
+                <input type="hidden" name="amount" id="amount" value="800"> {{-- required in kobo --}}
                 <input type="hidden" name="quantity" value="3">
                 <input type="hidden" name="currency" value="NGN">
                 <input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value',]) }}" > {{-- For other necessary things you want to add to your payload. it is optional though --}}
@@ -65,7 +65,7 @@ $split = [
       e.preventDefault();
     
       let handler = PaystackPop.setup({
-        key: 'pk_test_xxxxxxxxxx', // Replace with your public key
+        key: 'pk_test_5ff3a56850dc08f3e340cd4c7c8060ba417c6fa5', // Replace with your public key
         email: document.getElementById("email-address").value,
         amount: document.getElementById("amount").value * 100,
         ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
